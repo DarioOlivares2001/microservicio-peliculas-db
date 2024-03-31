@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,18 +24,29 @@ public class PeliculaController {
 
 
     @Autowired
-    private PeliculaService pelilculaService;
+    private PeliculaService peliculaService;
 
     @GetMapping
     public List<Pelicula> getAllPeliculas() {
         
-        return pelilculaService.getAllPeliculas();
+        return peliculaService.getAllPeliculas();
     }
 
     @GetMapping("/{id}")
-    public Optional<Pelicula> getPeliculaById(@PathVariable Long id) {
-        return pelilculaService.getPeliculaById(id);
+    public ResponseEntity<?> getPeliculaById(@PathVariable Long id) {
+
+        Optional<Pelicula> peliculas = peliculaService.getPeliculaById(id);
+        if(peliculas.isPresent())
+        {
+            return ResponseEntity.ok(peliculas) ;    
+        }else
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro la pelicula " + id.toString()  + "");
+
+        }
+        
     }
+      
     
 
 
