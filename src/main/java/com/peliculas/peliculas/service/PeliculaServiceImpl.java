@@ -24,5 +24,39 @@ public class PeliculaServiceImpl implements PeliculaService {
     {
         return peliculaRepository.findById(id);
     }
+
+    @Override
+    public Pelicula createPelicula(Pelicula pelicula)
+    {
+        return peliculaRepository.save(pelicula);
+    }
+
+    @Override
+    public void deletePelicula(Long id)
+    {
+        peliculaRepository.deleteById(id);
+    }
+
+    @Override
+    public Pelicula updatePelicula(long id, Pelicula pelicula)
+    {
+        if(peliculaRepository.existsById(id))
+        {
+            pelicula.setId(id);
+            return peliculaRepository.save(pelicula);
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+    /*
+     * 
+     *  Pelicula createPelicula(Pelicula pelicula);
+    Pelicula updatePelicula(long id, Pelicula pelicula);
+    void deletePelicula(Long id);
+     */
     
 }
