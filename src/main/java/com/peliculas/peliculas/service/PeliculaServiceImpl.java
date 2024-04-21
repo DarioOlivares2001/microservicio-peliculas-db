@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.peliculas.peliculas.model.Pelicula;
-import com.peliculas.peliculas.repository.PeliculaRepository;;
+import com.peliculas.peliculas.repository.PeliculaRepository;
 
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
@@ -52,11 +52,6 @@ public class PeliculaServiceImpl implements PeliculaService {
 
     }
 
-    /*
-     * 
-     *  Pelicula createPelicula(Pelicula pelicula);
-    Pelicula updatePelicula(long id, Pelicula pelicula);
-    void deletePelicula(Long id);
-     */
+    
     
 }

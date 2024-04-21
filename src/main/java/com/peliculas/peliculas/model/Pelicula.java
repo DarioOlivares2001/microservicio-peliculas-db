@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
 
@@ -11,7 +14,7 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "Pelicula")
-public class Pelicula {
+public class Pelicula extends RepresentationModel<Pelicula>{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
